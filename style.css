@@ -1,0 +1,1182 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Paleta de coloressss
+
+Negro suave: #0D0B12
+Lila oscuro: #5B477A
+Lila claro: #C9B6E4
+Rosa: #F29BC2
+Rosa muy claro: #FFD6E8
+*/
+
+/*PANTALLA DE INCIO*/
+
+/*Si amorcito, estoy usando notas para que te mojes*/
+
+body {
+    margin: 0;
+    background-color: #0D0B12;
+    color: #FFD6E8;
+    font-family: monospace;
+}
+
+#game {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-screen {
+    text-align: center;
+}
+
+#start-screen h1 {
+    font-size: 60px;
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+}
+
+#start-screen p {
+    color: #F29BC2;
+    font-size: 16px;
+}
+
+#start-button {
+    margin: 35px 0;
+    padding: 12px 35px;
+
+    background-color: transparent;
+    color: #F29BC2;
+
+    border: 2px solid #f4e9d8;
+
+    font-family: monospace;
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #F29BC2;
+    color: #0D0B12;
+}
+
+
+/*PANTALLA DE INTRODUCCION*/
+#intro-screen {
+    display: none;
+    text-align: center;
+}
+
+#intro-screen .date {
+    color: #C9B6E4;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#intro-screen h2 {
+    color: #F29BC2;
+    font-size: 45px;
+    letter-spacing: 6px;
+    margin: 15px 0;
+}
+
+.intro-text {
+    color: #FFD6E8;
+    font-size: 18px;
+}
+
+#game-screen {
+    display: none;
+}
+
+#room {
+    width: 700px;
+    height: 450px;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            ellipse at 55% 25%,
+            rgba(206, 150, 255, 0.13) 0%,
+            transparent 38%
+        ),
+
+        linear-gradient(
+            to bottom,
+            #352449 0%,
+            #352449 48%,
+            #513064 48%,
+            #432654 100%
+        );
+
+    border: 4px solid #F29BC2;
+
+    box-shadow:
+        inset 0 0 45px rgba(15, 8, 25, 0.55),
+        0 0 25px rgba(242, 155, 194, 0.22);
+}
+#room::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 48%;
+
+    width: 100%;
+    height: 52%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(35, 20, 48, 0.28) 3px,
+            transparent 3px
+        ),
+        linear-gradient(
+            0deg,
+            rgba(35, 20, 48, 0.28) 3px,
+            transparent 3px
+        );
+
+    background-size:
+        55px 55px,
+        55px 55px;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+/* Muebles de la habitacion */
+
+#clothes {
+    position: absolute;
+
+    width: 90px;
+    height: 170px;
+
+    left: 0;
+    top: 10px;
+
+    background: transparent;
+
+    z-index: 1;
+}
+
+/* barra vertical */
+#clothes::before {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 155px;
+
+    left: 8px;
+    top: 3px;
+
+    background-color: #211A28;
+
+    box-shadow: 3px 0 0 #100D14;
+
+    z-index: 1;
+}
+
+
+/* forma base de cada prenda */
+.garment {
+    position: absolute;
+
+    left: 12px;
+
+    border-radius: 4px 7px 5px 3px;
+
+    clip-path: polygon(
+        0% 12%,
+        18% 5%,
+        42% 0%,
+        66% 6%,
+        100% 18%,
+        84% 35%,
+        75% 100%,
+        18% 100%,
+        12% 42%,
+        0% 30%
+    );
+
+    box-shadow:
+        inset -7px 0 0 rgba(0, 0, 0, 0.12),
+        inset 5px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* prenda oscura */
+.garment-one {
+    width: 56px;
+    height: 72px;
+
+    top: 12px;
+
+    background-color: #302839;
+
+    transform: rotate(2deg);
+
+    z-index: 2;
+}
+
+
+/* prenda clara */
+.garment-two {
+    width: 62px;
+    height: 82px;
+
+    top: 45px;
+    left: 17px;
+
+    background-color: #E3D6E6;
+
+    transform: rotate(-2deg);
+
+    z-index: 3;
+}
+
+
+/* prenda lila/oscura */
+.garment-three {
+    width: 54px;
+    height: 70px;
+
+    top: 92px;
+    left: 11px;
+
+    background-color: #5B477A;
+
+    transform: rotate(3deg);
+
+    z-index: 4;
+}
+#dresser {
+    position: absolute;
+
+    width: 95px;
+    height: 150px;
+
+    right: 35px;
+    top: 75px;
+
+    background-color: #8A5E45;
+    border: 4px solid #4E3428;
+
+    box-shadow:
+        6px 6px 0 #251C35;
+
+    z-index: 1;
+}
+#dresser::before {
+    content: "";
+
+    position: absolute;
+    inset: 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 30%,
+            #4E3428 30%,
+            #4E3428 33%,
+            transparent 33%,
+            transparent 63%,
+            #4E3428 63%,
+            #4E3428 66%,
+            transparent 66%
+        );
+}
+#dresser::after {
+    content: "•  •  •";
+
+    position: absolute;
+
+    left: 0;
+    top: 18px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #D7B49E;
+    font-size: 16px;
+
+    line-height: 42px;
+    white-space: pre-line;
+}
+#tv {
+    position: absolute;
+
+    width: 110px;
+    height: 65px;
+
+    left: 50%;
+    top: -75px;
+
+    transform: translateX(-50%);
+
+    background-color: #0D0B12;
+
+    border: 5px solid #5B477A;
+
+    box-shadow:
+        4px 4px 0 #251C35;
+
+    z-index: 2;
+}
+#tv::after {
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 6px;
+
+    left: 50%;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+
+    background-color: #5B477A;
+}
+
+#chair {
+    position: absolute;
+
+    width: 78px;
+    height: 100px;
+
+    right: 145px;
+top: 116px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            transparent 15%,
+            #F8F5FA 15%,
+            #F8F5FA 25%,
+            transparent 25%,
+            transparent 75%,
+            #F8F5FA 75%,
+            #F8F5FA 85%,
+            transparent 85%
+        );
+
+    background-size: 100% 40px;
+    background-position: 0 65px;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+}
+
+/* respaldo alto de plástico */
+#chair::before {
+    content: "";
+
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
+
+    left: 10px;
+    top: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #F8F5FA 0px,
+            #F8F5FA 7px,
+            #D9D1DF 7px,
+            #D9D1DF 9px
+        );
+
+    border: 4px solid #F8F5FA;
+
+    border-radius: 14px 14px 3px 3px;
+
+    box-shadow:
+        3px 3px 0 #251C35;
+}
+
+/* asiento + patas */
+#chair::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 20px;
+
+    left: 4px;
+    top: 53px;
+
+    background-color: #FFFFFF;
+
+    border: 3px solid #D9D1DF;
+
+    border-radius: 3px;
+}
+
+#bed {
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: 20px;
+    bottom: 10px;
+
+    /* colchón */
+    background-color: #E8C6EE;
+
+    border: 4px solid #8B6098;
+
+    box-shadow:
+        7px 7px 0 #251C35;
+
+    z-index: 1;
+}
+#bed::before {
+    content: "";
+
+    position: absolute;
+
+    width: 105px;
+    height: 38px;
+
+    left: 28px;
+    bottom: 14px;
+
+    background-color: #FFD6E8;
+
+    border: 3px solid #C58FCA;
+    border-radius: 8px;
+
+    box-shadow:
+        inset -7px -5px 0 rgba(139, 96, 152, 0.15);
+
+    z-index: 2;
+}
+#bed::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 90px;
+
+    left: 0;
+    top: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #9A6BAD 0px,
+            #9A6BAD 22px,
+            #A978BA 22px,
+            #A978BA 44px
+        );
+
+    border-bottom: 4px solid #6E477E;
+}
+#door {
+    position: absolute;
+
+    width: 80px;
+    height: 15px;
+
+    left: 10px;
+    bottom: 0;
+
+    background-color: #F29BC2;
+}
+#player {
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+
+    left: 100px;
+    top: 100px;
+
+    background-color: #17121F;
+
+    border: 3px solid #F29BC2;
+
+    box-shadow:
+        4px 4px 0 #251C35;
+
+    z-index: 10;
+}
+
+#player::before,
+#player::after {
+    content: none;
+}/*CUADROS DE TEXTO*/
+#interaction-hint {
+    display: none;
+
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #F29BC2;
+    font-size: 16px;
+}
+
+#dialog-box {
+    display: none;
+
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 500px;
+    padding: 20px;
+
+    background-color: #0D0B12;
+
+    border: 3px solid #F29BC2;
+
+    color: #FFD6E8;
+    font-family: monospace;
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+#dialog-text {
+    margin: 0;
+white-space: pre-line;
+}
+
+
+/* Tiburon provisional */
+
+#shark {
+    position: absolute;
+
+    width: 54px;
+    height: 30px;
+
+    left: 25px;
+    bottom: 55px;
+    top: auto;
+
+    /* cuerpo */
+    background:
+        /* ojo */
+        radial-gradient(circle at 73% 34%,
+            #171521 0 3%,
+            transparent 4%
+        ),
+
+        /* pancita blanca */
+        radial-gradient(ellipse at 57% 74%,
+            #F4EDF7 0 38%,
+            transparent 40%
+        ),
+
+        /* cuerpo gris-lila */
+        #B6A8CA;
+
+    border: 3px solid #3D334A;
+
+    border-radius:
+        65% 48% 48% 60% /
+        52% 55% 50% 48%;
+
+    transform: rotate(-4deg);
+
+    z-index: 3;
+}
+#shark::before {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 14px;
+
+    left: 18px;
+    top: -11px;
+
+    background: #B6A8CA;
+
+    border: 3px solid #3D334A;
+    border-bottom: none;
+
+    clip-path: polygon(
+        0% 100%,
+        55% 0%,
+        100% 100%
+    );
+}
+#shark::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 26px;
+
+    left: -14px;
+    top: 1px;
+
+    background: #B6A8CA;
+
+    border: 3px solid #3D334A;
+
+    clip-path: polygon(
+        100% 50%,
+        0% 0%,
+        25% 50%,
+        0% 100%
+    );
+}
+
+/* MEMORY SCREEN */
+
+#memory-screen {
+    display: none;
+
+    position: fixed;
+    width: 600px;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 35px;
+
+    background-color: #0D0B12;
+    border: 3px solid #F29BC2;
+
+    text-align: center;
+    font-family: monospace;
+    z-index: 1000;
+}
+
+#memory-code {
+    color: #C9B6E4;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#memory-title {
+    color: #F29BC2;
+    font-size: 28px;
+    letter-spacing: 3px;
+
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+#memory-text {
+    color: #FFD6E8;
+    font-size: 17px;
+    line-height: 1.8;
+
+    min-height: 65px;
+white-space: pre-line;
+}
+
+#memory-continue {
+    color: #C9B6E4;
+    font-size: 13px;
+
+    margin-top: 30px;
+}
+
+/* ERROR MEMORY EFFECT */
+
+.memory-error {
+    color: #F29BC2;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.memory-error-blink {
+    animation: errorBlink 0.25s linear 2;
+}
+
+@keyframes errorBlink {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+#console {
+    position: absolute;
+
+    width: 55px;
+    height: 34px;
+
+   right: 157px;
+top: 131px;
+
+    background-color: #1A1722;
+
+    border: 4px solid #B58AC7;
+
+    border-radius: 3px 3px 1px 1px;
+
+    box-shadow:
+        4px 4px 0 #251C35;
+
+    z-index: 3;
+}
+#console::before {
+    content: "";
+
+    position: absolute;
+
+    width: 41px;
+    height: 21px;
+
+    left: 3px;
+    top: 3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #21183A,
+            #49305F
+        );
+
+    border: 2px solid #0D0B12;
+}
+#console::after {
+    content: "";
+
+    position: absolute;
+
+    width: 63px;
+    height: 8px;
+
+    left: -8px;
+    bottom: -11px;
+
+    background-color: #C9B6D8;
+
+    border: 2px solid #6E4A82;
+
+    transform: skewX(-12deg);
+
+    box-shadow:
+        2px 2px 0 #251C35;
+}
+
+#milow-card {
+    position: absolute;
+
+    width: 42px;
+    height: 26px;
+
+    right: 105px;
+    top: 255px;
+
+    background-color: #F7F2F5;
+    border: 2px solid #C9B6E4;
+
+    transform: rotate(-8deg);
+
+    box-shadow: 3px 3px 0 rgba(37, 28, 53, 0.45);
+
+    z-index: 2;
+}
+#milow-card::after {
+    content: "MILOW";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #8D6BB3;
+
+    font-family: monospace;
+    font-size: 8px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+#hamster {
+    position: absolute;
+
+    width: 36px;
+    height: 32px;
+
+    left: 180px;
+    top: 250px;
+
+    --pelaje: #efa63d;
+  --crema: #faf5d9;
+  --contorno: #402822;
+  --mejillas: #f5a58e;
+
+  /* Ojos, cara, cabeza, pancita y patas */
+  background:
+    /* Brillos de los ojos */
+    radial-gradient(ellipse 2.5% 3.5% at 35% 35%,
+      #fff 96%, transparent 100%),
+    radial-gradient(ellipse 2.5% 3.5% at 68% 35%,
+      #fff 96%, transparent 100%),
+
+    /* Ojos */
+    radial-gradient(ellipse 6.5% 8% at 33% 38%,
+      var(--contorno) 97%, transparent 100%),
+    radial-gradient(ellipse 6.5% 8% at 67% 38%,
+      var(--contorno) 97%, transparent 100%),
+
+    /* Nariz */
+    radial-gradient(ellipse 4% 2.5% at 50% 46%,
+      var(--contorno) 97%, transparent 100%),
+
+    /* Mejillas rosadas */
+    radial-gradient(ellipse 8% 4.5% at 24% 49%,
+      var(--mejillas) 97%, transparent 100%),
+    radial-gradient(ellipse 8% 4.5% at 76% 49%,
+      var(--mejillas) 97%, transparent 100%),
+
+    /* Diente y lengua */
+    radial-gradient(ellipse 3% 2% at 50% 53%,
+      #fffdf5 97%, transparent 100%),
+    radial-gradient(ellipse 3% 2% at 50% 59%,
+      #ee9698 97%, transparent 100%),
+
+    /* Boca */
+    radial-gradient(ellipse 5% 6.5% at 50% 55.5%,
+      var(--contorno) 97%, transparent 100%),
+
+    /* Hocico crema */
+    radial-gradient(ellipse 15% 12% at 50% 50%,
+      var(--crema) 97%, transparent 100%),
+
+    /* Cachetes grandes */
+    radial-gradient(ellipse 25% 17% at 30% 56%,
+      var(--crema) 97%, transparent 100%),
+    radial-gradient(ellipse 25% 17% at 70% 56%,
+      var(--crema) 97%, transparent 100%),
+
+    /* Cabeza naranja con borde café */
+    radial-gradient(ellipse 44% 33% at 50% 39%,
+      var(--pelaje) 94%,
+      var(--contorno) 95% 100%,
+      transparent 101%),
+
+    /* Manitas */
+    radial-gradient(ellipse 9% 12% at 28% 73%,
+      var(--pelaje) 80%,
+      var(--contorno) 84% 98%,
+      transparent 100%),
+    radial-gradient(ellipse 9% 12% at 72% 73%,
+      var(--pelaje) 80%,
+      var(--contorno) 84% 98%,
+      transparent 100%),
+
+    /* Patitas */
+    radial-gradient(ellipse 9% 5.5% at 31% 92%,
+      var(--pelaje) 77%,
+      var(--contorno) 82% 98%,
+      transparent 100%),
+    radial-gradient(ellipse 9% 5.5% at 69% 92%,
+      var(--pelaje) 77%,
+      var(--contorno) 82% 98%,
+      transparent 100%),
+
+    /* Pancita crema */
+    radial-gradient(ellipse 30% 25% at 50% 70%,
+      var(--crema) 97%, transparent 100%),
+
+    /* Cuerpo redondo */
+    radial-gradient(ellipse 38% 30% at 50% 65%,
+      var(--pelaje) 93%,
+      var(--contorno) 94% 100%,
+      transparent 101%),
+
+    /* Interior de las orejas */
+    radial-gradient(ellipse 8% 10% at 20% 17%,
+      var(--crema) 96%, transparent 100%),
+    radial-gradient(ellipse 8% 10% at 80% 17%,
+      var(--crema) 96%, transparent 100%),
+
+    /* Orejas */
+    radial-gradient(ellipse 14% 14% at 20% 17%,
+      var(--pelaje) 82%,
+      var(--contorno) 85% 98%,
+      transparent 100%),
+    radial-gradient(ellipse 14% 14% at 80% 17%,
+      var(--pelaje) 82%,
+      var(--contorno) 85% 98%,
+      transparent 100%);
+
+  background-repeat: no-repeat;
+}
+/* =========================
+   SMISKIS
+   ========================= */
+
+#smiski-one,
+#smiski-two {
+    position: absolute;
+
+    width: 18px;
+    height: 27px;
+
+    background: #B9DD8A;
+
+    border: 2px solid #536341;
+    border-radius: 8px 8px 6px 6px;
+
+    box-shadow:
+        inset -3px -2px 0 rgba(83, 99, 65, 0.15),
+        0 0 7px rgba(185, 221, 138, 0.35);
+
+    z-index: 3;
+}
+
+
+/* CARITAS */
+#smiski-one::before,
+#smiski-two::before {
+    content: "••";
+
+    position: absolute;
+
+    left: 4px;
+    top: 4px;
+
+    color: #536341;
+
+    font-family: monospace;
+    font-size: 6px;
+
+    letter-spacing: 2px;
+}
+
+
+/* PIERNITAS */
+#smiski-one::after,
+#smiski-two::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 7px;
+
+    left: 2px;
+    bottom: -5px;
+
+    background: #B9DD8A;
+
+    border: 2px solid #536341;
+    border-top: none;
+
+    border-radius: 0 0 3px 3px;
+
+    box-shadow:
+        9px 0 0 #B9DD8A,
+        9px 0 0 2px #536341;
+}
+
+
+/* SMISKI 1 */
+#smiski-one {
+    left: 60px;
+    top: 250px;
+}
+
+
+/* SMISKI 2 */
+#smiski-two {
+    left: 85px;
+    top: 250px;
+
+    transform: rotate(8deg);
+}
+#window {
+    position: absolute;
+
+    width: 110px;
+    height: 80px;
+
+    left: 250px;
+    top: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #090814 0%,
+            #17112B 45%,
+            #3B2455 100%
+        );
+
+    border: 6px solid #E59AC8;
+
+    box-shadow:
+        0 0 0 3px #6E4A82,
+        0 0 18px rgba(242, 155, 194, 0.6),
+        inset 0 0 18px rgba(255, 209, 232, 0.08);
+
+    z-index: 2;
+}
+
+
+#window::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            110deg,
+            transparent 0px,
+            transparent 12px,
+            rgba(200, 220, 255, 0.8) 13px,
+            rgba(200, 220, 255, 0.8) 15px,
+            transparent 16px,
+            transparent 28px
+        );
+
+    animation: rainMove 0.6s linear infinite;
+
+    pointer-events: none;
+}
+
+#window::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 12px;
+    top: 8px;
+
+    color: #FFF2A8;
+    font-size: 13px;
+
+    text-shadow:
+        -22px 10px #FFD1E8,
+        -52px 2px #FFF2A8,
+        -70px 30px #F29BC2,
+        -38px 48px #FFF2A8,
+        4px 42px #FFD1E8;
+}
+
+/* FINAL */
+
+#ending-screen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background-color: #171521;
+    color: #FFD1E8;
+
+    z-index: 5000;
+
+    text-align: center;
+    padding-top: 100px;
+
+    box-sizing: border-box;
+}
+
+#ending-code {
+    color: #F29BC2;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#ending-title {
+    margin-top: 40px;
+
+    color: #FFFFFF;
+    font-size: 32px;
+}
+
+#ending-text {
+    margin: 45px auto 0;
+
+    width: 500px;
+    max-width: 80%;
+
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+#ending-status {
+    margin-top: 45px;
+
+    color: #F29BC2;
+    line-height: 1.7;
+}
+
+#ending-love {
+    margin-top: 50px;
+
+    color: #FFD1E8;
+    font-size: 18px;
+}
+
+#room::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 48%;
+
+    width: 100%;
+    height: 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #25182F 0px,
+            #25182F 3px,
+            #6D3D78 3px,
+            #6D3D78 6px,
+            #2C1938 6px,
+            #2C1938 8px
+        );
+
+    z-index: 0;
+}
+@keyframes rainMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -20px 30px;
+    }
+}
